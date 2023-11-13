@@ -95,12 +95,13 @@ const formDataSchema = new mongoose.Schema({
 
 const FormDataModel = mongoose.model('FormData', formDataSchema);
 
-app.post('api/submit', async (req, res) => {
+app.post('/api/submit', async (req, res) => {
     try {
       const { name, email, message } = req.body;
   
       const formData = new FormDataModel({ name, email, message });
       await formData.save();
+
   
       res.json({ success: true, message: 'Data saved successfully' });
     } catch (error) {
